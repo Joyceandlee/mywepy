@@ -1,0 +1,36 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/my/my",
+    "pages/detail/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#cfc",
+    "navigationBarTitleText": "音悦台",
+    "navigationBarTextStyle": "black"
+  },
+  
+  "component": true,
+  "usingComponents": {},
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "color": "#696969",
+    "selectedColor": "#e54847",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath":"common/images/dianying.png",
+        "selectedIconPath":"common/images/dianying_active.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath":"common/images/wode.png",
+        "selectedIconPath":"common/images/wode_active.png"
+      }
+    ]
+  }
+}

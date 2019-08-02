@@ -1,0 +1,44 @@
+<template>
+  <view>
+    <h3>{{nm}}</h3>
+    <video src="{{url}}" controls autoplay loop enable-progress-gesture></video>
+  </view>
+</template>
+<script>
+import wepy from '@wepy/core';
+Page({
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    nm: '',
+    url: ''
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function(options) {
+    const { nm, url } = options;
+    console.log(options);
+    this.setData({
+      nm: nm,
+      url: url
+    });
+  }
+});
+</script>
+
+<style>
+h3 {
+  width: 100%;
+  display: block;
+  text-align: center;
+  font-size: 35rpx;
+  font-weight: 800;
+}
+video {
+  width: 100%;
+}
+</style>
+

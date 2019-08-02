@@ -1,0 +1,11 @@
+/* pages/detail/index.wxss */
+h3{
+    width: 100%;
+    display: block;
+    text-align: center;
+    font-size: 35rpx;
+    font-weight: 800;
+}
+video{
+    width: 100%;
+}

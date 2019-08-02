@@ -1,0 +1,50 @@
+/* pages/index/index.wxss */
+
+li {
+  display: flex;
+  flex-direction: row;
+  padding: 30rpx;
+  padding-bottom: 0;
+  font-size: 30rpx;
+  line-height: 55rpx;
+}
+
+.right {
+  width: 420rpx;
+  padding-top: 20rpx;
+   padding-bottom: 20rpx
+}
+
+.score {
+  font-size: 30rpx;
+  color: orange;
+  margin-left: 20rpx;
+}
+
+image {
+  width: 210rpx;
+  height: 300rpx;
+  margin-right: 30rpx;
+}
+.name{
+  overflow: hidden;
+  white-space: nowrap;
+}
+h3 {
+  font-weight: 800;
+  font-size: 40rpx;
+}
+.star{
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+p{
+
+  display: block;
+display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}

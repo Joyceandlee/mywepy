@@ -1,0 +1,6 @@
+<!--pages/detail/index.wxml-->
+<view>
+    <h3>{{nm}}</h3>
+    <video src="{{url}}"   controls autoplay loop enable-progress-gesture></video>
+    <!-- <video src="{{url}}"></video> -->
+</view>

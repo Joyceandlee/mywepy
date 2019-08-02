@@ -1,0 +1,104 @@
+<template>
+    <view>
+        <li wx:for="{{mvList}}" class="list" wx:key="key">
+            <image src="{{item.imgUrl}}" bindtap="goDetail" data-mv="{{item.mv}}" data-name="{{item.name}}"></image>
+            <div class="right">
+                <div class="name">
+                    <h3>{{item.name}}</h3>
+                    <span class="score">{{item.score}}</span>
+                </div>
+                    <span class="star">主演:{{item.actor}}</span>
+                    <p>简介:{{item.describe}}</p>
+                </div>
+        </li>
+</view>
+</template>
+<script>
+// pages/index/index.js
+import wepy from '@wepy/core';
+import {request} from '../../utils/index'
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    mvList:[]
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    console.log(request)
+    const url ="http://169.254.2.2:3000/getmvlist"
+    request(url,this.getMvList)
+  },
+  getMvList(list){
+    this.setData({
+      mvList:list
+    })
+  },
+  goDetail(e){
+    const {name,mv}=e.target.dataset;
+
+    console.log(name,mv)
+    wx.navigateTo({
+      url:`/pages/detail/index?nm=${name}&url=${mv}`
+    })
+  }
+})
+</script>
+
+<style>
+li {
+  display: flex;
+  flex-direction: row;
+  padding: 30rpx;
+  padding-bottom: 0;
+  font-size: 30rpx;
+  line-height: 55rpx;
+}
+
+.right {
+  width: 420rpx;
+  padding-top: 20rpx;
+   padding-bottom: 20rpx
+}
+
+.score {
+  font-size: 30rpx;
+  color: orange;
+  margin-left: 20rpx;
+}
+
+image {
+  width: 210rpx;
+  height: 300rpx;
+  margin-right: 30rpx;
+}
+.name{
+  overflow: hidden;
+  white-space: nowrap;
+}
+h3 {
+  font-weight: 800;
+  font-size: 40rpx;
+}
+.star{
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+p{
+
+  display: block;
+display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+</style>
+
+

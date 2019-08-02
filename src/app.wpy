@@ -1,0 +1,92 @@
+<style lang="less">
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+</style>
+
+<script>
+import wepy from '@wepy/core';
+import eventHub from './common/eventHub';
+import vuex from '@wepy/x';
+
+wepy.use(vuex);
+
+wepy.app({
+  hooks: {
+    // App 级别 hook，对整个 App 生效
+    // 同时存在 Page hook 和 App hook 时，优先执行 Page hook，返回值再交由 App hook 处
+    'before-setData': function(dirty) {
+      console.log('setData dirty: ', dirty);
+      return dirty;
+    }
+  },
+  globalData: {
+    userInfo: null
+  },
+
+  onLaunch() {
+    this.testAsync();
+    eventHub.$on('app-launch', (...args) => {
+      console.log('app-launch event emitted, the params are:');
+      console.log(args);
+    });
+  },
+
+  methods: {
+    sleep(s) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve('promise resolved');
+        }, s * 1000);
+      });
+    },
+
+    async testAsync() {
+      let d = await this.sleep(3);
+      console.log(d);
+    }
+  }
+});
+</script>
+<config>
+{
+    pages: [
+      "pages/index/index",
+      "pages/my/my",
+      "pages/detail/index"
+    ],
+    window: {
+     "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#cfc",
+    "navigationBarTitleText": "音悦台",
+    "navigationBarTextStyle": "black"
+    },
+     "component": true,
+    "usingComponents": {},
+    "sitemapLocation": "sitemap.json",
+    "tabBar": {
+    "color": "#696969",
+    "selectedColor": "#e54847",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath":"common/images/dianying.png",
+        "selectedIconPath":"common/images/dianying_active.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath":"common/images/wode.png",
+        "selectedIconPath":"common/images/wode_active.png"
+      }
+    ]
+  }
+}
+</config>

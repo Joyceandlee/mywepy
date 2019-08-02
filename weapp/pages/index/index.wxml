@@ -1,0 +1,14 @@
+<!--pages/index/index.wxml-->
+<view>
+ <li wx:for="{{mvList}}" class="list" wx:key="key">
+      <image src="{{item.imgUrl}}"bindtap="goDetail" data-mv="{{item.mv}}" data-name="{{item.name}}"></image>
+      <div class="right">
+        <div class="name">
+            <h3>{{item.name}}</h3>
+            <span class="score">{{item.score}}</span>
+        </div>
+        <span class="star">主演:{{item.actor}}</span>
+        <p>简介:{{item.describe}}</p>
+      </div>
+    </li>
+</view>
